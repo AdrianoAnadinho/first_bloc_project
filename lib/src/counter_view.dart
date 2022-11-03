@@ -1,11 +1,24 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'counter_cubit.dart';
 
-class CounterView extends StatelessWidget {
+class CounterView extends StatefulWidget {
   const CounterView({super.key});
+
+  @override
+  State<CounterView> createState() => _CounterViewState();
+}
+
+class _CounterViewState extends State<CounterView> {
+  late CounterCubit _cubit;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _cubit = CounterCubit();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +30,7 @@ class CounterView extends StatelessWidget {
       ),
       body: Center(
         child: BlocBuilder<CounterCubit, int>(
+          bloc: _cubit,
           builder: (context, state) {
             return Text(
               '$state',
@@ -32,12 +46,12 @@ class CounterView extends StatelessWidget {
           FloatingActionButton(
             key: UniqueKey(),
             child: const Icon(Icons.add),
-            onPressed: () => context.read<CounterCubit>().increment(),
+            onPressed: () => _cubit.increment(),
           ),
           FloatingActionButton(
             key: UniqueKey(),
             child: const Icon(Icons.remove),
-            onPressed: () => context.read<CounterCubit>().decrement(),
+            onPressed: () => _cubit.decrement(),
           )
         ],
       ),

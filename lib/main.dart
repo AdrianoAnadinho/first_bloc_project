@@ -4,7 +4,7 @@ import 'package:first_bloc_project/src/counter_observer.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  Bloc.observer = CounterObserver();
+  // Bloc.observer = CounterObserver();
 
   runApp(const CounterApp());
 }
