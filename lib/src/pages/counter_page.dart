@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'counter_cubit.dart';
+import '../cubits/counter_cubit.dart';
 
 class CounterView extends StatefulWidget {
   const CounterView({super.key});
